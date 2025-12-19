@@ -16,27 +16,27 @@
   </div>
 
   <div class="spacer"></div>
-
+{% if not user.is_authenticated %}
   <a class="btn-add" type="button" href="{% url 'signup' %}">
     <span class="label">Регистрация</span>
   </a>
 
-  <a class="btn-add" type="button">
+  <a class="btn-add" type="button" href="{% url 'login'%}">
     <span class="label">Войти</span>
   </a>
-{% if user.is_authenticated %}
+
+  {%else%}
+
   <div class="family-chip" title="Семья">
     <div class="avatar" aria-hidden="true"></div>
-    <div class="family-text">Пользователь</div>
+    <div class="family-text">{{ user.username }}</div>
   </div>
+  <form method="post" action="{% url 'logout' %}" class="logout-form">
+  {% csrf_token %}
+  <button type="submit" class="btn-logout">
+    Выйти
+  </button>
+</form>
   {% endif %}
-  {% if messages %}
-  <ul class="messages">
-    {% for message in messages %}
-      <li class="{{ message.tags }}">
-        {{ message }}
-      </li>
-    {% endfor %}
-  </ul>
-{% endif %}
+
 </nav>

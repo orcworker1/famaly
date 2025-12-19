@@ -393,4 +393,390 @@
 .kpi-down{ color: #c64a3c; }
 
 
+/* ===== AUTH v2 (в палитре navbar/sidebar) ===== */
+.auth2{
+  min-height: 520px;
+  display: grid;
+  place-items: center;
+  padding: 12px 0 18px;
+}
+
+.auth2-card{
+  width: min(560px, 100%);
+  border-radius: 28px;
+  padding: 18px 18px 16px;
+
+  /* прямо как topbar/sidebar: тёплый градиент */
+  background: linear-gradient(180deg, var(--bg1), var(--bg2));
+  border: 1px solid rgba(255,255,255,.60);
+  box-shadow: var(--shadowBig);
+  position: relative;
+  overflow: hidden;
+}
+
+/* лёгкий “стеклянный” слой поверх градиента */
+.auth2-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(255,255,255,.18);
+  pointer-events:none;
+}
+
+/* внутренний белый “лист” — чтобы форма читалась */
+.auth2-form{
+  position: relative;
+  z-index: 1;
+  background: rgba(255,255,255,.55);
+  border: 1px solid rgba(255,255,255,.65);
+  border-radius: 22px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+}
+
+.auth2-head{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding: 6px 6px 14px;
+}
+
+/* круглый “логотип” как в sidebar */
+.auth2-badge{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #ffd7a8, #f0b37e);
+  box-shadow: var(--shadow2);
+  position: relative;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+.auth2-badge::before{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 35% 44%, rgba(255,255,255,.95) 0 6px, transparent 7px),
+    radial-gradient(circle at 62% 44%, rgba(255,255,255,.95) 0 6px, transparent 7px),
+    radial-gradient(ellipse at 50% 80%, rgba(255,255,255,.90) 0 14px, transparent 15px);
+  opacity:.9;
+  transform: translateY(1px);
+}
+
+.auth2-title{
+  margin: 0;
+  font-weight: 950;
+  font-size: 28px;
+  letter-spacing: .2px;
+  line-height: 1.1;
+}
+
+.auth2-sub{
+  margin: 6px 0 0;
+  color: rgba(43,43,43,.65);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+/* Разметка form.as_p */
+.auth2-fields p{
+  margin: 0 0 12px;
+}
+
+.auth2-fields label{
+  display: block;
+  margin: 0 0 6px;
+  font-weight: 900;
+  font-size: 13px;
+  color: rgba(43,43,43,.72);
+}
+
+/* поля в стиле “search” + мягкие бордеры */
+.auth2-fields input,
+.auth2-fields select,
+.auth2-fields textarea{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.75);
+  background: rgba(255,255,255,.62);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.70);
+  outline: none;
+  font-size: 14px;
+  color: var(--text);
+  transition: box-shadow .12s ease, border-color .12s ease;
+}
+
+.auth2-fields input:focus,
+.auth2-fields select:focus,
+.auth2-fields textarea:focus{
+  border-color: rgba(79,138,63,.35);
+  box-shadow: 0 0 0 4px var(--ring), inset 0 1px 0 rgba(255,255,255,.70);
+}
+
+.auth2-fields .helptext{
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: rgba(43,43,43,.55);
+  font-weight: 800;
+}
+
+/* ошибки в мягком “danger” стиле */
+.auth2-fields .errorlist{
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(226,109,90,.12);
+  border: 1px solid rgba(226,109,90,.22);
+  color: rgba(96,18,10,.86);
+  font-weight: 900;
+  font-size: 12px;
+}
+.auth2-fields .errorlist li{ margin: 0; }
+
+/* кнопка — максимально близко к .btn-add */
+.auth2-submit{
+  width: 100%;
+  margin-top: 6px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.35);
+  background: linear-gradient(180deg, #6aa554, var(--green2));
+  color: #fff;
+  font-weight: 950;
+  cursor: pointer;
+  box-shadow: 0 10px 18px rgba(63,116,50,.25);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.auth2-submit:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 14px 26px rgba(63,116,50,.30);
+}
+.auth2-submit:focus{
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.auth2-hint{
+  margin: 12px 0 0;
+  text-align: center;
+  color: rgba(43,43,43,.65);
+  font-weight: 900;
+  font-size: 13px;
+}
+
+.auth2-link{
+  color: #4a78c8;
+  text-decoration: none;
+  font-weight: 950;
+}
+.auth2-link:hover{ text-decoration: underline; }
+
+@media (max-width: 640px){
+  .auth2-card{ border-radius: 24px; padding: 14px; }
+  .auth2-form{ border-radius: 20px; padding: 14px; }
+  .auth2-title{ font-size: 24px; }
+}
+
+/* Auth error (login) */
+.auth2-error{
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(226,109,90,.12);
+  border: 1px solid rgba(226,109,90,.22);
+  color: rgba(96,18,10,.86);
+  font-weight: 900;
+  font-size: 13px;
+}
+
+/* ===== Flash Messages (FULL) ===== */
+.messages-container{
+  position: fixed;
+  top: 92px;            /* ниже navbar */
+  right: 24px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 420px;
+  width: 100%;
+  pointer-events: none; /* клики проходят сквозь контейнер */
+}
+
+.messages{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.message{
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.88));
+  border: 1px solid rgba(255,255,255,.75);
+  box-shadow: var(--shadowBig);
+  backdrop-filter: blur(10px);
+  pointer-events: auto; /* клики работают по сообщению */
+  position: relative;
+  overflow: hidden;
+  animation: flashSlideIn .28s ease-out;
+}
+
+@keyframes flashSlideIn {
+  from { transform: translateX(40px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+.message::before{
+  content:"";
+  position:absolute;
+  left:0; top:0; bottom:0;
+  width:4px;
+  background: var(--message-color);
+}
+
+.message-icon{
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  background: var(--message-bg);
+  color: var(--message-color);
+  font-weight: 900;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+}
+
+.message-content{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.message-title{
+  font-weight: 900;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.message-text{
+  font-size: 14px;
+  color: rgba(43,43,43,.75);
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.message-close{
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+
+  border: 1px solid rgba(0,0,0,.06);
+  background: rgba(255,255,255,.60);
+
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+
+  color: rgba(43,43,43,.55);
+  font-size: 18px;
+  line-height: 0;
+
+  transition: all .15s ease;
+}
+
+.message-close:hover{
+  background: rgba(255,255,255,.85);
+  color: rgba(43,43,43,.85);
+}
+
+.message-close:focus{
+  outline: 3px solid rgba(74,120,200,.22);
+  outline-offset: 2px;
+}
+
+/* Цвета по тегам Django */
+.message.success{
+  --message-color: #4f8a3f;
+  --message-bg: rgba(79,138,63,.15);
+}
+.message.error,
+.message.danger{
+  --message-color: #e26d5a;
+  --message-bg: rgba(226,109,90,.15);
+}
+.message.warning{
+  --message-color: #f39c12;
+  --message-bg: rgba(243,156,18,.15);
+}
+.message.info{
+  --message-color: #4a78c8;
+  --message-bg: rgba(74,120,200,.15);
+}
+.message.debug{
+  --message-color: #7b6f64;
+  --message-bg: rgba(123,111,100,.15);
+}
+
+/* Mobile */
+@media (max-width: 640px){
+  .messages-container{
+    top: 86px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+  .message{ padding: 14px 16px; }
+}
+
+/* ===== Logout button (navbar style) ===== */
+.logout-form{
+  margin: 0;
+}
+
+.btn-logout{
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.45);
+  background: rgba(255,255,255,.45);
+  color: var(--muted);
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.6);
+  transition: all .12s ease;
+}
+
+.btn-logout:hover{
+  background: rgba(226,109,90,.14);
+  color: #c64a3c;
+  border-color: rgba(226,109,90,.35);
+}
+
+.btn-logout:focus{
+  outline: 3px solid rgba(226,109,90,.25);
+  outline-offset: 2px;
+}
 

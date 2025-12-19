@@ -1,0 +1,48 @@
+{% if messages %}
+<div class="messages-container" aria-live="polite" aria-atomic="true">
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="message {{ message.tags }}">
+        <div class="message-icon" aria-hidden="true">
+          {% if "success" in message.tags %}✓
+          {% elif "error" in message.tags or "danger" in message.tags %}!
+          {% elif "warning" in message.tags %}⚠
+          {% elif "info" in message.tags %}i
+          {% else %}•{% endif %}
+        </div>
+
+        <div class="message-content">
+          <div class="message-title">
+            {% if "success" in message.tags %}Успешно
+            {% elif "error" in message.tags or "danger" in message.tags %}Ошибка
+            {% elif "warning" in message.tags %}Предупреждение
+            {% elif "info" in message.tags %}Информация
+            {% else %}Сообщение{% endif %}
+          </div>
+          <div class="message-text">{{ message }}</div>
+        </div>
+
+        <button type="button" class="message-close" aria-label="Закрыть">×</button>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<script>
+  (function () {
+    const root = document.querySelector('.messages-container');
+    if (!root) return;
+
+    root.addEventListener('click', (e) => {
+      const btn = e.target.closest('.message-close');
+      if (!btn) return;
+      const msg = btn.closest('.message');
+      if (msg) msg.remove();
+    });
+
+    root.querySelectorAll('.message').forEach((msg) => {
+      setTimeout(() => { if (msg && msg.parentNode) msg.remove(); }, 5000);
+    });
+  })();
+</script>
+{% endif %}

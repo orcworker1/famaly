@@ -4,6 +4,16 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib import messages
 from django.views.generic import FormView
+from django.contrib.auth.views import LogoutView
+
+
+class MyLogoutView(LogoutView):
+
+    def dispatch(self, request, *args, **kwargs):
+        messages.info(request, "Вы вышли из аккаунта")
+        return super().dispatch(request, *args, **kwargs)
+
+
 
 class SignUpView(FormView):
     template_name = 'registration/signup.html'

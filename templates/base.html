@@ -11,10 +11,11 @@
   {% bootstrap_css %}
   {% bootstrap_javascript %}
 
-
-</head >
-<link rel="stylesheet" href="{% static 'css/site.css' %}">
+  <link rel="stylesheet" href="{% static 'site.css' %}">
+</head>
 <body>
+  {% include "messages.html" %}
+
   <div class="page">
 
     {% include "navbar.html" %}

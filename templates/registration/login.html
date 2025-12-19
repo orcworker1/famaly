@@ -1,8 +1,40 @@
+{% extends "base.html" %}
 
+{% block title %}Вход{% endblock %}
 
-<h1>Вход</h1>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Войти</button>
-</form>
+{% block content %}
+<section class="auth2">
+  <div class="auth2-card">
+    <header class="auth2-head">
+      <div class="auth2-badge" aria-hidden="true"></div>
+      <div>
+        <h1 class="auth2-title">Вход</h1>
+        <p class="auth2-sub">Рады видеть вас снова 👋</p>
+      </div>
+    </header>
+
+    <form method="post" class="auth2-form" novalidate>
+      {% csrf_token %}
+
+      {% if form.errors %}
+        <div class="auth2-error">
+          Неверный логин или пароль
+        </div>
+      {% endif %}
+
+      <div class="auth2-fields">
+        {{ form.as_p }}
+      </div>
+
+      <button class="auth2-submit" type="submit">
+        Войти
+      </button>
+
+      <p class="auth2-hint">
+        Нет аккаунта?
+        <a class="auth2-link" href="{% url 'signup' %}">Регистрация</a>
+      </p>
+    </form>
+  </div>
+</section>
+{% endblock %}

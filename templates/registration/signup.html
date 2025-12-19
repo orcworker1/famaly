@@ -3,10 +3,32 @@
 {% block title %}Регистрация{% endblock %}
 
 {% block content %}
-<h1>Регистрация</h1>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Создать аккаунт</button>
-</form>
+<section class="auth2">
+  <div class="auth2-card">
+    <header class="auth2-head">
+      <div class="auth2-badge" aria-hidden="true"></div>
+      <div>
+        <h1 class="auth2-title">Регистрация</h1>
+        <p class="auth2-sub">Создайте аккаунт, чтобы начать вести семейный бюджет.</p>
+      </div>
+    </header>
+
+    <form method="post" class="auth2-form" novalidate>
+      {% csrf_token %}
+
+      <div class="auth2-fields">
+        {{ form.as_p }}
+      </div>
+
+      <button class="auth2-submit" type="submit">
+        Создать аккаунт
+      </button>
+
+      <p class="auth2-hint">
+        Уже есть аккаунт?
+        <a class="auth2-link" href="{% url 'login' %}">Войти</a>
+      </p>
+    </form>
+  </div>
+</section>
 {% endblock %}

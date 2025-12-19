@@ -1,0 +1,42 @@
+<nav class="topbar" aria-label="Верхняя навигация">
+  <div class="brand">
+    <div class="logo" aria-hidden="true"></div>
+    <div class="brand-title">Семейный Бюджет</div>
+  </div>
+
+  <div class="segmented" role="tablist" aria-label="Период">
+    <input type="radio" id="p-month" name="period" checked>
+    <label for="p-month" role="tab" aria-selected="true">Месяц</label>
+
+    <input type="radio" id="p-week" name="period">
+    <label for="p-week" role="tab">Неделя</label>
+
+    <input type="radio" id="p-year" name="period">
+    <label for="p-year" role="tab">Год</label>
+  </div>
+
+  <div class="spacer"></div>
+
+  <a class="btn-add" type="button" href="{% url 'signup' %}">
+    <span class="label">Регистрация</span>
+  </a>
+
+  <a class="btn-add" type="button">
+    <span class="label">Войти</span>
+  </a>
+{% if user.is_authenticated %}
+  <div class="family-chip" title="Семья">
+    <div class="avatar" aria-hidden="true"></div>
+    <div class="family-text">Пользователь</div>
+  </div>
+  {% endif %}
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="{{ message.tags }}">
+        {{ message }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+</nav>

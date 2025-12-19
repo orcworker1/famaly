@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Главная — Семейный бюджет{% endblock %}
+
+{% block content %}
+  <div class="dash">
+
+  <section class="grid grid-4">
+    <article class="card kpi">
+      <div class="kpi-top">
+        <div class="kpi-title">Баланс</div>
+        <span class="pill pill-blue">Этот месяц</span>
+      </div>
+      <div class="kpi-value">42 380 ₽</div>
+      <div class="kpi-meta kpi-up">+3% к прошлому месяцу</div>
+    </article>
+
+    <article class="card kpi">
+      <div class="kpi-top">
+        <div class="kpi-title">Доходы</div>
+        <span class="pill pill-green">План</span>
+      </div>
+      <div class="kpi-value">120 000 ₽</div>
+      <div class="kpi-meta">Зарплата + подработка</div>
+    </article>
+
+    <article class="card kpi">
+      <div class="kpi-top">
+        <div class="kpi-title">Расходы</div>
+        <span class="pill pill-red">Факт</span>
+      </div>
+      <div class="kpi-value">77 620 ₽</div>
+      <div class="kpi-meta kpi-down">+9% (нужно внимание)</div>
+    </article>
+
+    <article class="card kpi">
+      <div class="kpi-top">
+        <div class="kpi-title">Сбережения</div>
+        <span class="pill">Цели</span>
+      </div>
+      <div class="kpi-value">12 900 ₽</div>
+      <div class="kpi-meta">В этом месяце в цели</div>
+    </article>
+  </section>
+
+
+
+
+{% endblock %}
